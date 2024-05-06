@@ -23,20 +23,9 @@ public class UserRepository {
         return jdbcTemplate.query("SELECT * FROM users", new UserRowMapper());
     }
 
-    // TODO ADDRESS toevoegen aan insert statement
     public void addUser(User user) {
-        jdbcTemplate.update("INSERT INTO users (NAME, AGE, EMAIL, ADDRESS) VALUES (?, ?, ?, ?)", user.getName(),
-                user.getAge(), user.getEmail(), user.getAddress());
-    }
-
-    // TODO updateUser toe te voegen
-    public void updateUser(User user) {
-        jdbcTemplate.update("UPDATE USERS SET NAME = ?, AGE = ?, ADDRESS = ? WHERE EMAIL = ?", user.getName(),
-                user.getAge(), user.getAddress(), user.getEmail());
-    }
-
-    public void deleteUser(User user) {
-        jdbcTemplate.update("DELETE FROM USERS WHERE EMAIL = ?", user.getEmail());
+        jdbcTemplate.update("INSERT INTO users (NAME, AGE, EMAIL) VALUES (?, ?, ?)", user.getName(),
+                user.getAge(), user.getEmail());
     }
 
     public User getUserByEmail(String email) {

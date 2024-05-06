@@ -30,27 +30,4 @@ public class UserService {
         userRepository.addUser(userData);
         return userData;
     }
-
-    // TODO updateUser toevoegen
-    public User updateUser(String email, User userData) {
-        User existingUser = userRepository.getUserByEmail(email);
-        if (existingUser == null) {
-            throw new ServiceException("User does not exist.");
-        }
-        existingUser.setName(userData.getName());
-        existingUser.setAge(userData.getAge());
-        existingUser.setEmail(userData.getEmail());
-        existingUser.setAddress(userData.getAddress());
-        userRepository.updateUser(userData);
-        return userData;
-    }
-
-    public void deleteUser(String email) {
-        User existingUser = userRepository.getUserByEmail(email);
-        if (existingUser == null) {
-            throw new ServiceException("User does not exist.");
-        }
-        userRepository.deleteUser(existingUser);
-    }
-
 }
