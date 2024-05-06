@@ -1,6 +1,9 @@
 package be.ucll.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Table(name = "users")
 public class User {
@@ -8,11 +11,15 @@ public class User {
     private String name;
     private int age;
     private String email;
+    @NotBlank(message = "User address is required and has more than (>) 5 characters.")
+    @Length(min = 5, message = "User address is required and has more than 5 characters")
+    private String address;
 
-    public User(String name, int age, String email) {
+    public User(String name, int age, String email, String address) {
         setName(name);
         setAge(age);
         setEmail(email);
+        setAddress(address);
     }
 
     public String getName() {
@@ -46,5 +53,13 @@ public class User {
             throw new DomainException("User email cannot be changed.");
         }
         this.email = email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

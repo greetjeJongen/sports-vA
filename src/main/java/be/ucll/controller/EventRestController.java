@@ -9,36 +9,54 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 
 import be.ucll.model.DomainException;
-import be.ucll.model.User;
+import be.ucll.model.Event;
+import be.ucll.model.Sport;
+import be.ucll.service.EventService;
 import be.ucll.service.ServiceException;
-import be.ucll.service.UserService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/users")
-public class UserRestController {
+@RequestMapping("/events")
+public class EventRestController {
 
-    private UserService userService;
+    private EventService eventService;
 
-    public UserRestController(UserService userService) {
-        this.userService = userService;
+    public EventRestController(EventService eventService) {
+        this.eventService = eventService;
+    }
+
+    @PostMapping
+    public Event addEvent(@RequestBody @Valid Event event) {
+        return eventService.addEvent(event);
     }
 
     @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+    public List<Event> getAllEvents() {
+        return eventService.getAllEvents();
     }
 
-    @PostMapping()
-    public User addUser(@Valid @RequestBody User user) {
-        return userService.addUser(user);
+    @PostMapping("/sport/{eventName}")
+    public Sport addSportToEvent(@RequestBody @Valid Sport sport, @PathVariable String eventName) {
+        return eventService.addSport(eventName, sport);
+    }
+
+    @GetMapping("/sport")
+    public List<Event> getEventsWithSportWithMoreThanPlayers(@RequestParam int minNumOfPlayers) {
+        return eventService.getEventsWithSportWithMoreThanPlayers(minNumOfPlayers);
+    }
+
+    @GetMapping("/kudos/{eventId}/{sportId}")
+    public int getKudos(@PathVariable Long eventId, @PathVariable Long sportId) {
+        return eventService.getKudos(eventId, sportId);
     }
 
     @ExceptionHandler(DomainException.class)

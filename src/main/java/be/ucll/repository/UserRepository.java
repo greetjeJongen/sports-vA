@@ -24,8 +24,8 @@ public class UserRepository {
     }
 
     public void addUser(User user) {
-        jdbcTemplate.update("INSERT INTO users (NAME, AGE, EMAIL) VALUES (?, ?, ?)", user.getName(),
-                user.getAge(), user.getEmail());
+        jdbcTemplate.update("INSERT INTO users (NAME, AGE, EMAIL, ADDRESS) VALUES (?, ?, ?,?)", user.getName(),
+                user.getAge(), user.getEmail(), user.getAddress());
     }
 
     public User getUserByEmail(String email) {
