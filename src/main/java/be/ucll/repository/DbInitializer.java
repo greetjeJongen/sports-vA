@@ -20,9 +20,7 @@ public class DbInitializer {
     public void initialize() {
 
         User user1 = new User("John Doe", 25, "john.doe@ucll.be");
-        // address1: Naamsestraat 5 - Leuven
         User user2 = new User("Jane Toe", 30, "jane.toe@ucll.be");
-        // address 2: Geldenaaksebaan 355 - Heverlee
 
         userRepository.addUser(user1);
         userRepository.addUser(user2);
