@@ -20,15 +20,11 @@ public class DbInitializer {
     public void initialize() {
 
         User user1 = new User("John Doe", 25, "john.doe@ucll.be");
+        // address1: Naamsestraat 5 - Leuven
         User user2 = new User("Jane Toe", 30, "jane.toe@ucll.be");
-        // User user3 = new User("Jack Doe", 5, "jack.doe@ucll.be");
-        // User user4 = new User("Sarah Doe", 4, "sarah.doe@ucll.be");
-        // User user5 = new User("Birgit Doe", 18, "birgit.doe@ucll.be");
+        // address 2: Geldenaaksebaan 355 - Heverlee
 
         userRepository.addUser(user1);
         userRepository.addUser(user2);
-        // userRepository.addUser(user3);
-        // userRepository.addUser(user4);
-        // userRepository.addUser(user5);
     }
 }
