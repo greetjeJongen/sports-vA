@@ -12,7 +12,7 @@ public class User {
     private int age;
     private String email;
     @NotBlank(message = "User address is required and has more than (>) 5 characters.")
-    @Length(min = 5, message = "User address is required and has more than 5 characters")
+    @Length(min = 5, message = "User address is required and has more than (>) 5 characters")
     private String address;
 
     public User(String name, int age, String email, String address) {

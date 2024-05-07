@@ -24,8 +24,8 @@ public class DbInitializer {
     @PostConstruct
     public void initialize() {
 
-        User user1 = new User("John Doe", 25, "john.doe@ucll.be", "Naamsesteenweg 29, Heverlee");
-        User user2 = new User("Jane Toe", 30, "jane.toe@ucll.be", "Diestsestraat 13, Leuven");
+        User user1 = new User("John Doe", 25, "john.doe@ucll.be", "Naamsestraat 5 - Leuven");
+        User user2 = new User("Jane Toe", 30, "jane.toe@ucll.be", "Geldenaaksebaan 355 - Heverlee");
         // User user3 = new User("Jack Doe", 5, "jack.doe@ucll.be");
         // User user4 = new User("Sarah Doe", 4, "sarah.doe@ucll.be");
         // User user5 = new User("Birgit Doe", 18, "birgit.doe@ucll.be");
